@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Анализ Данных</title>
+
+    <meta name="description" content="Коспект лекций по Анализу Данных">
+    <meta name="author" content="LayoutIt!">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+</head>
+<body>
+
+<script type="text/css">
+    body {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    .container-fluid,
+    .row-fluid {
+        height: inherit;
+    }
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Анализ данных
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group" id="index"></ul>
+        </div>
+        <div class="col-md-9" height="100%">
+            <div class="media">
+                <iframe id="lectureIframe" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script>
+    config = {
+        "lectures": [{
+            "title": "Лекция 1",
+            "path": "lectures/NLP_Case_Study.html"
+        }, {
+            "title": "Лекция 2",
+            "path": "lectures/NLP_Case_Study_[Solutions].html"
+        }]
+    };
+
+    function initIndex() {
+        var index = document.getElementById("index");
+        var lectureIframe = document.getElementById("lectureIframe");
+
+        config.lectures.forEach(function (lecture) {
+            var indexItem = document.createElement("li");
+            indexItem.className = "list-group-item";
+            indexItem.text = lecture.title;
+            indexItem.addEventListener("click", function () {
+                lectureIframe.src = lecture.path;
+            });
+
+            index.appendChild(indexItem);
+        });
+    }
+
+
+    $(document).ready(initIndex);
+</script>
+</body>
+</html>
